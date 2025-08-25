@@ -1,50 +1,492 @@
 .container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
+  margin: 0;
+  padding: 5rem 2rem 3rem 2rem;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a 0%, #0f172a 50%, #1e3a8a 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(30, 58, 138, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(15, 118, 110, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(161, 98, 7, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Floating geometric shapes for playfulness */
+.container::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(45deg, var(--playful-pink), var(--playful-purple));
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: float 6s ease-in-out infinite;
+  z-index: 1;
+}
+
+/* Pikachu background animations */
+.pikachu1 {
+  position: fixed;
+  top: 15%;
+  left: 5%;
+  width: 80px;
+  height: 80px;
+  background: url('/playground/pikachu-running.gif') no-repeat center center;
+  background-size: contain;
+  opacity: 0.8;
+  z-index: 1;
+  animation: pikachuRun1 20s linear infinite;
+  pointer-events: none;
+}
+
+.pikachu2 {
+  position: fixed;
+  top: 25%;
+  right: 15%;
+  width: 70px;
+  height: 70px;
+  background: url('/playground/pikachu-running.gif') no-repeat center center;
+  background-size: contain;
+  opacity: 0.7;
+  z-index: 1;
+  animation: pikachuRun2 25s linear infinite;
+  pointer-events: none;
+}
+
+.pikachu3 {
+  position: fixed;
+  bottom: 30%;
+  left: 20%;
+  width: 90px;
+  height: 90px;
+  background: url('/playground/pikachu-running.gif') no-repeat center center;
+  background-size: contain;
+  opacity: 0.6;
+  z-index: 1;
+  animation: pikachuRun3 30s linear infinite;
+  pointer-events: none;
+}
+
+.pikachu4 {
+  position: fixed;
+  bottom: 20%;
+  right: 10%;
+  width: 75px;
+  height: 75px;
+  background: url('/playground/pikachu-running.gif') no-repeat center center;
+  background-size: contain;
+  opacity: 0.7;
+  z-index: 1;
+  animation: pikachuRun4 22s linear infinite;
+  pointer-events: none;
+}
+
+.pikachu5 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85px;
+  height: 85px;
+  background: url('/playground/pikachu-running.gif') no-repeat center center;
+  background-size: contain;
+  opacity: 0.5;
+  z-index: 1;
+  animation: pikachuRun5 35s linear infinite;
+  pointer-events: none;
+}
+
+/* Pikachu animation keyframes */
+@keyframes pikachuRun1 {
+  0% { transform: translateX(-100px) rotate(0deg); }
+  100% { transform: translateX(calc(100vw + 100px)) rotate(360deg); }
+}
+
+@keyframes pikachuRun2 {
+  0% { transform: translateX(100px) rotate(0deg); }
+  100% { transform: translateX(calc(-100vw - 100px)) rotate(-360deg); }
+}
+
+@keyframes pikachuRun3 {
+  0% { transform: translateY(-100px) rotate(0deg); }
+  100% { transform: translateY(calc(100vh + 100px)) rotate(720deg); }
+}
+
+@keyframes pikachuRun4 {
+  0% { transform: translateY(100px) rotate(0deg); }
+  100% { transform: translateY(calc(-100vh - 100px)) rotate(-720deg); }
+}
+
+@keyframes pikachuRun5 {
+  0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+  25% { transform: translate(-50%, -50%) rotate(90deg) scale(1.2); }
+  50% { transform: translate(-50%, -50%) rotate(180deg) scale(0.8); }
+  75% { transform: translate(-50%, -50%) rotate(270deg) scale(1.1); }
+  100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
 }
 
 .header {
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
 .header h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 5.5rem;
+  font-weight: 800;
+  font-family: var(--font-instrument-serif), serif;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #cbd5e1 50%, #94a3b8 75%, #64748b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(100, 116, 139, 0.4);
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  from { text-shadow: 0 0 30px rgba(100, 116, 139, 0.4); }
+  to { text-shadow: 0 0 50px rgba(100, 116, 139, 0.8), 0 0 70px rgba(100, 116, 139, 0.4); }
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: rgba(248, 250, 252, 0.8);
+  font-weight: 400;
+  font-family: var(--font-ibm-plex-sans), sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.systemInfo {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.systemInfo span {
+  font-family: var(--font-ibm-plex-sans), monospace;
+  font-size: 0.8rem;
+  color: rgba(15, 118, 110, 0.8);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 1rem;
+  background: rgba(15, 118, 110, 0.1);
+  border: 1px solid rgba(15, 118, 110, 0.2);
+  border-radius: 4px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.systemInfo span:hover {
+  background: rgba(15, 118, 110, 0.2);
+  border-color: var(--playful-cyan);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(6, 182, 212, 0.3);
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--playful-cyan), transparent);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-top: 3rem;
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
 .card {
-  padding: 1.5rem;
-  border-radius: var(--border-radius);
-  background: rgba(0, 0, 0, 0.02);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease;
+  padding: 2.5rem;
+  border-radius: 16px;
+  background: rgba(248, 250, 252, 0.03);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  backdrop-filter: blur(20px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
   color: inherit;
   cursor: pointer;
   display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(15, 118, 110, 0.08) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--playful-cyan), transparent);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
 }
 
 .card:hover {
-  background: rgba(0, 0, 0, 0.04);
-  transform: translateY(-2px);
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--playful-cyan);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(6, 182, 212, 0.2),
+    inset 0 1px 0 rgba(248, 250, 252, 0.1);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card:hover::after {
+  transform: scaleX(1);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.titleSection {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.emoji {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: all 0.3s ease;
+}
+
+.card:hover .emoji {
+  transform: scale(1.2) rotate(5deg);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+}
+
+.cardHeader h3 {
+  margin-bottom: 0;
+  flex: 1;
+  font-family: var(--font-instrument-serif), serif;
+}
+
+.cardMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-end;
+}
+
+.status {
+  font-family: var(--font-ibm-plex-sans), monospace;
+  font-size: 0.7rem;
+  color: var(--playful-green);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.5rem;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 3px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.category {
+  font-family: var(--font-ibm-plex-sans), monospace;
+  font-size: 0.7rem;
+  color: var(--playful-orange);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.5rem;
+  background: rgba(249, 115, 22, 0.15);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  color: var(--playful-orange);
+  border-radius: 3px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.status:hover, .category:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card h3 {
-  margin-bottom: 0.5rem;
-  font-size: 1.25rem;
-  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: var(--font-instrument-serif), serif;
+  color: #f8fafc;
+  letter-spacing: -0.01em;
+  position: relative;
+  z-index: 2;
 }
 
 .card p {
-  font-size: 0.9rem;
-  opacity: 0.8;
+  font-size: 1rem;
+  font-family: var(--font-ibm-plex-sans), sans-serif;
+  color: rgba(248, 250, 252, 0.8);
   line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+
+/* Playful corner accents */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 8px;
+  height: 8px;
+  background: var(--playful-pink);
+  border-radius: 50%;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.card:hover::before {
+  background: var(--playful-purple);
+  opacity: 1;
+  transform: scale(1.5);
+}
+
+/* Ripple effect container */
+.ripple {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: rgba(6, 182, 212, 0.5);
+  transform: scale(0);
+  animation: ripple-animation 0.6s ease-out;
+  pointer-events: none;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(12);
+    opacity: 0;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem 1rem;
+  }
+  
+  .header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .card {
+    padding: 2rem;
+  }
+}
+
+/* Enhanced animation for cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.card:nth-child(1) { 
+  animation-delay: 0.1s; 
+  border-left: 3px solid var(--playful-pink);
+}
+.card:nth-child(2) { 
+  animation-delay: 0.2s; 
+  border-left: 3px solid var(--playful-cyan);
+}
+.card:nth-child(3) { 
+  animation-delay: 0.3s; 
+  border-left: 3px solid var(--playful-orange);
+}
+.card:nth-child(4) { 
+  animation-delay: 0.4s; 
+  border-left: 3px solid var(--playful-green);
 } 

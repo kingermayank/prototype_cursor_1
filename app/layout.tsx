@@ -1,28 +1,30 @@
 /**
  * Root layout component that wraps all pages in the application.
  * This layout:
- * - Sets up Geist fonts (both Sans and Mono variants)
+ * - Sets up Google Fonts (Instrument Serif for headings, IBM Plex Sans for body)
  * - Configures metadata like title and favicon
  * - Provides the basic HTML structure
  * - Applies font variables to the entire app
  */
 
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Instrument_Serif, IBM_Plex_Sans } from "next/font/google";
 import "./styles/globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
   subsets: ["latin"],
+  weight: "400",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const ibmPlexSans = IBM_Plex_Sans({
+  variable: "--font-ibm-plex-sans",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Elizabeth's prototypes",
+  title: "Mayank's prototypes",
   description: "The home for all my prototypes",
   icons: {
     icon: [
@@ -41,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${instrumentSerif.variable} ${ibmPlexSans.variable}`}>
         {children}
       </body>
     </html>

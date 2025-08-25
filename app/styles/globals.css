@@ -9,13 +9,51 @@
   margin: 0;
 }
 
+/* Custom Properties for Futuristic Theme */
+:root {
+  --primary-glow: rgba(129, 140, 248, 0.3);
+  --secondary-glow: rgba(120, 119, 198, 0.3);
+  --accent-glow: rgba(120, 219, 255, 0.3);
+  --background-start: #0a0a0a;
+  --background-end: #16213e;
+  --card-border: rgba(129, 140, 248, 0.2);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  
+  /* Premium Material Colors */
+  --premium-white: #f8fafc;
+  --premium-blue: #1e3a8a;
+  --premium-teal: #0f766e;
+  --premium-gold: #a16207;
+  --premium-silver: #64748b;
+  
+  /* Corporate Luxury Accents */
+  --corporate-dark: #0f172a;
+  --corporate-accent: #3b82f6;
+  --corporate-light: #e2e8f0;
+  
+  /* Playful Accent Colors */
+  --playful-pink: #ec4899;
+  --playful-purple: #a855f7;
+  --playful-cyan: #06b6d4;
+  --playful-orange: #f97316;
+  --playful-yellow: #eab308;
+  --playful-green: #10b981;
+}
+
 body {
   /* 3. Add accessible line-height */
   line-height: 1.5;
   /* 4. Improve text rendering */
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   /* 5. Set default font */
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-family: var(--font-ibm-plex-sans), system-ui, sans-serif;
+  /* Futuristic styling */
+  background: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* 5. Improve media defaults */
@@ -47,4 +85,39 @@ h1, h2, h3, h4, h5, h6 {
 */
 #root, #__next {
   isolation: isolate;
+}
+
+/* Custom Scrollbar for Futuristic Feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary-glow), var(--secondary-glow));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--secondary-glow), var(--accent-glow));
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(129, 140, 248, 0.3);
+  color: var(--text-primary);
+}
+
+/* Focus styles for accessibility */
+*:focus {
+  outline: 2px solid var(--primary-glow);
+  outline-offset: 2px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 } 
