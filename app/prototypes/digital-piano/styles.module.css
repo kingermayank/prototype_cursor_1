@@ -1,0 +1,342 @@
+.container {
+  min-height: 100vh;
+  background: #f0f0f0;
+  padding: 20px;
+  font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+  color: #333;
+  position: relative;
+}
+
+.header {
+  text-align: center;
+  background: #d0d0d0;
+  border: 2px solid #999;
+  border-radius: 6px;
+  padding: 15px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+}
+
+
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.controls:last-of-type {
+  margin-bottom: 0;
+}
+
+.controlGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.select {
+  background: #fff;
+  border: 2px solid #999;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.select:focus {
+  outline: none;
+  border-color: #666;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.slider {
+  width: 120px;
+  height: 8px;
+  background: #fff;
+  border: 2px solid #999;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #666;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #666;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.autoplayButton {
+  background: #333;
+  color: #fff;
+  border: 2px solid #666;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 120px;
+}
+
+.autoplayButton:hover:not(:disabled) {
+  background: #555;
+  border-color: #888;
+}
+
+.autoplayButton:disabled {
+  background: #666;
+  color: #999;
+  cursor: not-allowed;
+  border-color: #888;
+}
+
+.pianoContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.piano {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 2px solid #999;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.pianoKeys {
+  display: flex;
+  position: relative;
+  padding: 15px 8px;
+}
+
+.key {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  user-select: none;
+}
+
+.white {
+  width: 50px;
+  height: 160px;
+  background: #e0e0e0;
+  border: 1px solid #ccc;
+  border-radius: 0 0 4px 4px;
+  margin: 0 1px;
+  box-shadow: none;
+}
+
+.white:hover {
+  background: #d0d0d0;
+}
+
+.white.active {
+  background: linear-gradient(180deg, #ffd700 0%, #ffb700 100%);
+  transform: translateY(4px);
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.sharp {
+  position: absolute;
+  width: 30px;
+  height: 90px;
+  background: #333;
+  border: 1px solid #000;
+  border-radius: 0 0 4px 4px;
+  margin-left: -15px;
+  z-index: 2;
+  box-shadow: none;
+}
+
+.sharp:hover {
+  background: linear-gradient(180deg, #ff7a00 0%, #e66900 100%);
+  transform: translateY(2px);
+}
+
+.sharp.active {
+  background: linear-gradient(180deg, #ffd700 0%, #ffb700 100%);
+  transform: translateY(4px);
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+  .noteLabel {
+  position: absolute;
+  bottom: 10px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #333;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.visualizationContainer {
+  /* Positioned absolutely for dragging */
+}
+
+.macWindow {
+  background: #000;
+  border: 2px solid #00ff00;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 255, 0, 0.3);
+  width: 500px;
+  max-width: 90vw;
+}
+
+.windowHeader {
+  background: #111;
+  border-bottom: 2px solid #00ff00;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 4px 4px 0 0;
+}
+
+.windowControls {
+  display: flex;
+  gap: 6px;
+}
+
+.controlButton {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #00ff00;
+  border: 1px solid #00cc00;
+}
+
+.windowTitle {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #00ff00;
+  flex: 1;
+  text-align: center;
+}
+
+.windowContent {
+  padding: 20px;
+  background: #000;
+  border-radius: 0 0 4px 4px;
+}
+
+.waveformContainer {
+  height: 120px;
+  background: #000;
+  border: 1px solid #00ff00;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.waveform {
+  width: 100%;
+  height: 100%;
+}
+
+.noAudio {
+  color: #00ff00;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.sharp .noteLabel {
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+
+
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .controls {
+    gap: 20px;
+  }
+  
+  .piano {
+    padding: 15px 5px;
+  }
+  
+  .white {
+    width: 45px;
+    height: 150px;
+  }
+  
+  .sharp {
+    width: 30px;
+    height: 90px;
+    margin-left: -15px;
+  }
+  
+  .noteLabel {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .controls {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .white {
+    width: 35px;
+    height: 120px;
+  }
+  
+  .sharp {
+    width: 25px;
+    height: 70px;
+    margin-left: -12.5px;
+  }
+}

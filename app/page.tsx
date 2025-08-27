@@ -22,6 +22,14 @@ export default function Home() {
       emoji: '✨',
       path: '/prototypes/confetti-button'
     },
+    {
+      title: 'Digital Piano',
+      description: 'A fully functional synthesizer with Old Mac OS aesthetic in monochromatic orange 🎹',
+      status: 'ACTIVE',
+      category: 'AUDIO',
+      emoji: '🎹',
+      path: '/prototypes/digital-piano'
+    },
     // Add your new prototypes here like this:
     // {
     //   title: 'Your new prototype',
