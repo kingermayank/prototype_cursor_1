@@ -125,7 +125,7 @@ export default function DigitalPiano() {
   const oscillatorsRef = useRef<Map<string, OscillatorNode>>(new Map());
   const gainNodesRef = useRef<Map<string, GainNode>>(new Map());
   const analyserRef = useRef<AnalyserNode | null>(null);
-  const animationFrameRef = useRef<number | undefined>();
+  const animationFrameRef = useRef<number | undefined>(undefined);
   const autoplayRef = useRef<NodeJS.Timeout[]>([]);
   const reverbRef = useRef<ConvolverNode | null>(null);
   const filterRef = useRef<BiquadFilterNode | null>(null);
