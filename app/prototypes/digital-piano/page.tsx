@@ -128,6 +128,7 @@ export default function DigitalPiano() {
   const animationFrameRef = useRef<number | undefined>(undefined);
   const autoplayRef = useRef<NodeJS.Timeout[]>([]);
   const reverbRef = useRef<ConvolverNode | null>(null);
+  const reverbGainRef = useRef<GainNode | null>(null);
   const filterRef = useRef<BiquadFilterNode | null>(null);
 
   useEffect(() => {
@@ -146,12 +147,14 @@ export default function DigitalPiano() {
     
     // Create reverb (simple impulse response)
     reverbRef.current = audioContextRef.current.createConvolver();
+    reverbGainRef.current = audioContextRef.current.createGain();
     createReverbImpulse();
     
-    // Connect audio chain: analyser -> filter -> reverb -> destination
+    // Connect audio chain: analyser -> filter -> reverb -> reverbGain -> destination
     analyserRef.current.connect(filterRef.current);
     filterRef.current.connect(reverbRef.current);
-    reverbRef.current.connect(audioContextRef.current.destination);
+    reverbRef.current.connect(reverbGainRef.current);
+    reverbGainRef.current.connect(audioContextRef.current.destination);
     
     return () => {
       if (audioContextRef.current) {
@@ -193,8 +196,8 @@ export default function DigitalPiano() {
 
   // Update reverb mix
   useEffect(() => {
-    if (reverbRef.current) {
-      reverbRef.current.gain = reverb;
+    if (reverbGainRef.current) {
+      reverbGainRef.current.gain.setValueAtTime(reverb, audioContextRef.current?.currentTime || 0);
     }
   }, [reverb]);
 
